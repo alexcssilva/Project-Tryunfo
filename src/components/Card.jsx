@@ -21,7 +21,7 @@ class Card extends Component {
       <p data-testid="attr1-card">{cardAttr1}</p>
       </div>
     );
-  }
+  } 
 }
 
 Form.propTypes = {
