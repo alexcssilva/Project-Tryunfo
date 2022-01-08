@@ -1,6 +1,6 @@
 textarea, select, button, input {
   display: block;
-  width: 300px;
   margin-bottom: 2px 20px;
   padding: 5px;
+  width: 300px;
 }
