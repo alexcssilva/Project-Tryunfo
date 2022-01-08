@@ -1,11 +1,11 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-textarea,
-select,
-button,
+textarea, 
+select, 
+button, 
 input {
   display: block;
   width: 300px;
