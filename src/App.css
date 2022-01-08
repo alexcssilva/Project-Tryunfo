@@ -1,12 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-textarea ,
-select ,
-button ,
-input {
+textarea, select, button, input {
   display: block;
   width: 300px;
   margin-bottom: 2px 20px;
