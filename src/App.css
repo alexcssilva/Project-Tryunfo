@@ -1,4 +1,14 @@
-.form-class {
-  display: flex;
-  flex-direction: column;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+textarea,
+select,
+button,
+input {
+  display: block;
+  width: 300px;
+  margin-bottom: 20px;
+  padding: 5px;
 }
