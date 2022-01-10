@@ -23,13 +23,40 @@ class App extends Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
-  OnInputChange(event) {
-    const { name, value, checked, type } = event.target;
-    this.setState({
-      [name]: type === 'checkbox' ? checked : value,
-    }, () => this.ValidateSaveButton());
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+      cardRare,
+    } = this.state;
+    const saveInput = {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+      cardRare,
+    };
+    this.setState((currentState) => ({
+      stateInput: [...currentState.stateInput, saveInput],
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+    }));
   }
-
+  
   ValidateSaveButton() {
     const checkedInput = this.CheckedInput();
     const checkedValueAttribute = this.CheckedValueAttribute();
@@ -66,40 +93,6 @@ class App extends Component {
       || attr3 < 0) {
       return true;
     } return false;
-  }
-
-  onSaveButtonClick(event) {
-    event.preventDefault();
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardTrunfo,
-      cardRare,
-    } = this.state;
-    const saveInput = {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardTrunfo,
-      cardRare,
-    };
-    this.setState((currentState) => ({
-      stateInput: [...currentState.stateInput, saveInput],
-      cardName: '',
-      cardDescription: '',
-      cardImage: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardRare: 'normal',
-    }));
   }
 
   render() {
