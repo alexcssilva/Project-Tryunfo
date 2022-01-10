@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
-import { number } from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -14,7 +13,7 @@ class App extends Component {
       cardAttr2: '',
       cardAttr3: '',
       cardTrunfo: '',
-      
+
       isSaveButtonDisabled: true,
     };
     this.OnInputChange = this.OnInputChange.bind(this);
@@ -31,9 +30,11 @@ class App extends Component {
   validando() {
     const checkedInput = this.CheckedInput();
     const checkedValueAttribute = this.CheckedValueAttribute();
+    const checkedTrue = false;
     this.setState({
-      isSaveButtonDisabled: (checkedInput || checkedValueAttribute) ? true : false
-    })
+      isSaveButtonDisabled:
+        (checkedInput || checkedValueAttribute) ? !checkedTrue : checkedTrue,
+    });
   }
 
   CheckedInput() {
@@ -78,13 +79,14 @@ class App extends Component {
       cardAttr2,
       cardAttr3,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
           onInputChange={ this.OnInputChange }
-          isSaveButtonDisabled={ this.state.isSaveButtonDisabled }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
