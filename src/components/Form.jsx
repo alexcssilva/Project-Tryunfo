@@ -78,6 +78,7 @@ class Form extends Component {
           <label htmlFor="image-input">
             <input
               id="image-input"
+              name="cardImage"
               type="text"
               data-testid="image-input"
               value={ cardImage }
