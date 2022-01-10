@@ -13,21 +13,24 @@ class App extends Component {
       cardAttr2: '',
       cardAttr3: '',
       cardTrunfo: '',
-
+      cardImage: '',
+      stateInput: [],
+      cardRare: '',
       isSaveButtonDisabled: true,
     };
     this.OnInputChange = this.OnInputChange.bind(this);
     this.CheckedInput = this.CheckedInput.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   OnInputChange(event) {
     const { name, value, checked, type } = event.target;
     this.setState({
       [name]: type === 'checkbox' ? checked : value,
-    }, () => this.validando());
+    }, () => this.ValidateSaveButton());
   }
 
-  validando() {
+  ValidateSaveButton() {
     const checkedInput = this.CheckedInput();
     const checkedValueAttribute = this.CheckedValueAttribute();
     const checkedTrue = false;
@@ -65,11 +68,39 @@ class App extends Component {
     } return false;
   }
 
-  // isSaveButtonDisabled = () => {
-  //   this.setState((currentState) => {
-  //     isSaveButtonDisabled: this.CheckedInput() ? true : false;
-  //   });
-  // }
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+      cardRare,
+    } = this.state;
+    const saveInput = {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+      cardRare,
+    };
+    this.setState((currentState) => ({
+      stateInput: [...currentState.stateInput, saveInput],
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+    }));
+  }
 
   render() {
     const {
@@ -79,6 +110,8 @@ class App extends Component {
       cardAttr2,
       cardAttr3,
       cardTrunfo,
+      cardImage,
+      cardRare,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -87,12 +120,15 @@ class App extends Component {
         <Form
           onInputChange={ this.OnInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
           cardTrunfo={ cardTrunfo }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
         />
         <Card
           cardName={ cardName }
@@ -101,6 +137,8 @@ class App extends Component {
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
           cardTrunfo={ cardTrunfo }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
         />
       </div>
     );

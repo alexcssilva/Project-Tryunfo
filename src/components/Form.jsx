@@ -86,7 +86,7 @@ class Form extends Component {
             />
           </label>
           <select
-            name="rare-input"
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
