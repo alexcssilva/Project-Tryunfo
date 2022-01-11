@@ -9,6 +9,7 @@ class Card extends Component {
       }
       return null;
     }
+
     const {
       cardName,
       cardDescription,

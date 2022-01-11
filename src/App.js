@@ -115,6 +115,7 @@ class App extends Component {
       cardImage,
       cardRare,
       hasTrunfo,
+      stateInput,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -144,6 +145,13 @@ class App extends Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
         />
+        <div>
+          { stateInput.map((card) => (
+            <div key={ card.cardName }>
+              <Card { ...card } />
+            </div>
+          )) }
+        </div>
       </div>
     );
   }

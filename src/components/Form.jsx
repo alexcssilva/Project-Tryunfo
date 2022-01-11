@@ -113,7 +113,9 @@ class Form extends Component {
             <option value="raro">raro</option>
             <option value="muito raro">muito-raro</option>
           </select>
+
           { hasTrunfoCard(hasTrunfo) }
+
           <button
             id="save-button"
             type="submit"
