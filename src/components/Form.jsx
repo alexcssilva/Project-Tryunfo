@@ -12,11 +12,29 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
+    function hasTrunfoCard(card) {
+      if (card) {
+        return (<p>Você já tem um Super Trunfo em seu baralho</p>);
+      } return (
+        <label htmlFor="trunfo-input">
+          <input
+            name="cardTrunfo"
+            id="trunfo-input"
+            type="checkbox"
+            data-testid="trunfo-input"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+          />
+        </label>
+      );
+    }
+
     return (
       <form className="form-class">
         <div className="form-container">
@@ -95,16 +113,7 @@ class Form extends Component {
             <option value="raro">raro</option>
             <option value="muito raro">muito-raro</option>
           </select>
-          <label htmlFor="trunfo-input">
-            <input
-              name="cardTrunfo"
-              id="trunfo-input"
-              type="checkbox"
-              data-testid="trunfo-input"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </label>
+          { hasTrunfoCard(hasTrunfo) }
           <button
             id="save-button"
             type="submit"

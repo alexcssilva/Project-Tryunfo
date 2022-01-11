@@ -12,10 +12,11 @@ class App extends Component {
       cardAttr1: '',
       cardAttr2: '',
       cardAttr3: '',
-      cardTrunfo: '',
+      cardTrunfo: false,
       cardImage: '',
       stateInput: [],
       cardRare: '',
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
     this.OnInputChange = this.OnInputChange.bind(this);
@@ -53,10 +54,18 @@ class App extends Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
+      hasTrunfo: !currentState.hasTrunfo,
       cardRare: 'normal',
     }));
   }
-  
+
+  OnInputChange(event) {
+    const { name, value, checked, type } = event.target;
+    this.setState({
+      [name]: type === 'checkbox' ? checked : value,
+    }, () => this.ValidateSaveButton());
+  }
+
   ValidateSaveButton() {
     const checkedInput = this.CheckedInput();
     const checkedValueAttribute = this.CheckedValueAttribute();
@@ -105,6 +114,7 @@ class App extends Component {
       cardTrunfo,
       cardImage,
       cardRare,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -121,6 +131,7 @@ class App extends Component {
           cardAttr3={ cardAttr3 }
           cardTrunfo={ cardTrunfo }
           cardImage={ cardImage }
+          hasTrunfo={ hasTrunfo }
           cardRare={ cardRare }
         />
         <Card
